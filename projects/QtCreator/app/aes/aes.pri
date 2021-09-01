@@ -59,6 +59,7 @@ $${NADIR_SRC}/xos/io/sequence.hpp \
 $${NADIR_SRC}/xos/io/seeker.hpp \
 $${NADIR_SRC}/xos/io/reader.hpp \
 $${NADIR_SRC}/xos/io/writer.hpp \
+$${NADIR_SRC}/xos/io/string/reader.hpp \
 \
 $${NADIR_SRC}/xos/console/main.hpp \
 $${NADIR_SRC}/xos/console/getopt/main_opt.hpp \
@@ -108,4 +109,7 @@ $${cifra_FRAMEWORKS} \
 aes_LIBS += \
 $${cifra_LIBS} \
 
+########################################################################
+# NO Qt
+QT -= gui core
 

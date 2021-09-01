@@ -14,7 +14,7 @@
 // or otherwise) arising in any way out of the use of this software,
 // even if advised of the possibility of such damage.
 //
-//   File: ciphra.code-workspace
+//   File: cifra.code-workspace
 //
 // Author: $author$
 //   Date: 8/1/2021
@@ -23,7 +23,7 @@
 {
     "folders": [
         {
-            "path": "../../../../../ciphra"
+            "path": "../../../../../cifra"
         }
     ]
 }
