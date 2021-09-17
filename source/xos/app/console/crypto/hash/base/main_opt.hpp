@@ -16,7 +16,7 @@
 ///   File: main_opt.hpp
 ///
 /// Author: $author$
-///   Date: 2/7/2021
+///   Date: 2/7/2021, 9/17/2021
 ///////////////////////////////////////////////////////////////////////
 #ifndef XOS_APP_CONSOLE_CRYPTO_HASH_BASE_MAIN_OPT_HPP
 #define XOS_APP_CONSOLE_CRYPTO_HASH_BASE_MAIN_OPT_HPP
@@ -117,12 +117,13 @@ public:
     typedef typename extends::writer_t writer_t;
     typedef typename extends::file_t file_t;
     typedef typename extends::string_t string_t;
+    typedef typename extends::string_reader_t string_reader_t;
     typedef typename extends::char_t char_t;
     typedef typename extends::end_char_t end_char_t;
     enum { end_char = extends::end_char };
 
     /// constructor / destructor
-    main_optt(): hash_run_(0), hash_initialize_(0), hash_finalize_(0) {
+    main_optt(): run_(0), hash_run_(0), hash_initialize_(0), hash_finalize_(0) {
     }
     virtual ~main_optt() {
     }
@@ -138,13 +139,18 @@ protected:
 
 protected:
     /// ...default_run
+    int (derives::*run_)(int argc, char_t** argv, char_t** env);
     virtual int default_run(int argc, char_t** argv, char_t** env) {
         int err = 0;
-        const char_t* arg = 0;
-        if ((argc > optind) && (arg = argv[optind]) && (arg[0])) {
-            err = this->all_hash_run(argc, argv, env);
+        if ((this->run_)) {
+            err = (this->*run_)(argc, argv, env);
         } else {
-            err = extends::default_run(argc, argv, env);
+            const char_t* arg = 0;
+            if ((argc > optind) && (arg = argv[optind]) && (arg[0])) {
+                err = this->all_hash_run(argc, argv, env);
+            } else {
+                err = extends::default_run(argc, argv, env);
+            }
         }
         return err;
     }
@@ -153,6 +159,61 @@ protected:
     virtual int plain_run(int argc, char_t** argv, char_t** env) {
         int err = 0;
         err = all_hash_run(argc, argv, env);
+        return err;
+    }
+
+    /// ...get_hmac_key_run
+    virtual int get_hmac_key_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        const byte_t* hmac_key = 0;
+        size_t sizeof_hmac_key = 0;
+
+        if ((hmac_key = this->hmac_key(sizeof_hmac_key))) {
+            this->output_x(hmac_key, sizeof_hmac_key);
+        }
+        return err;
+    }
+    virtual int before_get_hmac_key_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
+    virtual int after_get_hmac_key_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
+    virtual int all_get_hmac_key_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        if (!(err = before_get_hmac_key_run(argc, argv, env))) {
+            int err2 = 0;
+            err = get_hmac_key_run(argc, argv, env);
+            if ((err2 = after_get_hmac_key_run(argc, argv, env))) {
+                if (!(err)) err = err2;
+            }
+        }
+        return err;
+    }
+    virtual int set_get_hmac_key_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        run_ = &derives::all_get_hmac_key_run;
+        return err;
+    }
+    virtual int before_set_get_hmac_key_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
+    virtual int after_set_get_hmac_key_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
+    virtual int all_set_get_hmac_key_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        if (!(err = before_set_get_hmac_key_run(argc, argv, env))) {
+            int err2 = 0;
+            err = set_get_hmac_key_run(argc, argv, env);
+            if ((err2 = after_set_get_hmac_key_run(argc, argv, env))) {
+                if (!(err)) err = err2;
+            }
+        }
         return err;
     }
 
@@ -498,7 +559,16 @@ protected:
     }
     /// ...hmac_hash_initialize
     virtual int hmac_hash_initialize(xos::crypto::hash::algorithm& hash) {
-        int err = 0;
+        int err = 1;
+        const byte_t* hmac_key = 0;
+        size_t sizeof_hmac_key = 0;
+
+        if ((hmac_key = this->hmac_key(sizeof_hmac_key))) {
+            if (0 <= hash.initialize(hmac_key, sizeof_hmac_key)) {
+                err = 0;
+            }
+        } else {
+        }
         return err;
     }
     virtual int before_hmac_hash_initialize(xos::crypto::hash::algorithm& hash) {
@@ -515,6 +585,30 @@ protected:
             int err2 = 0;
             err = hmac_hash_initialize(hash);
             if ((err2 = after_hmac_hash_initialize(hash))) {
+                if (!(err)) err = err2;
+            }
+        }
+        return err;
+    }
+    virtual int set_hmac_hash_initialize(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        hash_initialize_ = &derives::all_hmac_hash_initialize;
+        return err;
+    }
+    virtual int before_set_hmac_hash_initialize(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
+    virtual int after_set_hmac_hash_initialize(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
+    virtual int all_set_hmac_hash_initialize(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        if (!(err = before_set_hmac_hash_initialize(argc, argv, env))) {
+            int err2 = 0;
+            err = set_hmac_hash_initialize(argc, argv, env);
+            if ((err2 = after_set_hmac_hash_initialize(argc, argv, env))) {
                 if (!(err)) err = err2;
             }
         }
@@ -712,6 +806,12 @@ protected:
         return 0;
     }
 
+    /// ...hmac_key...
+    virtual const byte_t* hmac_key(size_t& size) const {
+        size = 0;
+        return 0;
+    }
+
     /// ...hash...
     virtual byte_t* hash(size_t& size) const {
         size = 0;
@@ -753,11 +853,42 @@ protected:
         }
         return err;
     }
+    virtual int on_hmac_key_set
+    (byte_t* hmac_key, size_t sizeof_hmac_key, size_t hmac_key_size,
+     int argc, char_t**argv, char_t**env) {
+        int err = 0;
+        if (!(err = this->all_set_hmac_hash_initialize(argc, argv, env))) {
+        }
+        return err;
+    }
+    virtual int on_set_key_option
+    (int optval, const char_t* optarg, const char_t* optname, 
+     int optind, int argc, char_t**argv, char_t**env) {
+        int err = 0;
+        if ((optarg) && (optarg[0])) {
+        }
+        return err;
+    }
+    virtual int on_get_key_option
+    (int optval, const char_t* optarg, const char_t* optname, 
+     int optind, int argc, char_t**argv, char_t**env) {
+        int err = 0;
+        if ((optarg) && (optarg[0])) {
+            err = this->on_set_key_option(optval, optarg, optname, optind, argc, argv, env);
+        } else {
+            if (!(err = this->all_set_get_hmac_key_run(argc, argv, env))) {
+            }
+        }
+        return err;
+    }
     virtual int on_key_option
     (int optval, const char_t* optarg, const char_t* optname, 
      int optind, int argc, char_t**argv, char_t**env) {
         int err = 0;
         if ((optarg) && (optarg[0])) {
+            err = this->on_set_key_option(optval, optarg, optname, optind, argc, argv, env);
+        } else {
+            err = this->on_get_key_option(optval, optarg, optname, optind, argc, argv, env);
         }
         return err;
     }
