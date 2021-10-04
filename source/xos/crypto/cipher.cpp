@@ -13,31 +13,16 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: main.cpp
+///   File: cipher.cpp
 ///
 /// Author: $author$
-///   Date: 2/3/2021
+///   Date: 10/4/2021
 ///////////////////////////////////////////////////////////////////////
-#include "xos/app/console/crypto/sea/main.hpp"
-
-#if defined(XOS_CONSOLE_MAIN_MAIN)
-#include "xos/console/main_main.cpp"
-#define XOS_APP_CONSOLE_CRYPTO_SEA_MAIN_INSTANCE
-#endif /// defined(XOS_CONSOLE_MAIN_MAIN)
+#include "xos/crypto/cipher.hpp"
+#include "xos/crypto/cipher/implemented.cpp"
 
 namespace xos {
-namespace app {
-namespace console {
 namespace crypto {
-namespace sea {
 
-/// class main
-#if defined(XOS_APP_CONSOLE_CRYPTO_SEA_MAIN_INSTANCE)
-static main the_main;
-#endif /// defined(XOS_APP_CONSOLE_CRYPTO_SEA_MAIN_INSTANCE)
-
-} /// namespace sea
 } /// namespace crypto
-} /// namespace console
-} /// namespace app
 } /// namespace xos

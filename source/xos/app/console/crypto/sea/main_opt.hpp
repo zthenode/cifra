@@ -16,7 +16,7 @@
 ///   File: main_opt.hpp
 ///
 /// Author: $author$
-///   Date: 2/3/2021
+///   Date: 2/3/2021, 9/29/2021
 ///////////////////////////////////////////////////////////////////////
 #ifndef XOS_APP_CONSOLE_CRYPTO_SEA_MAIN_OPT_HPP
 #define XOS_APP_CONSOLE_CRYPTO_SEA_MAIN_OPT_HPP
@@ -63,6 +63,8 @@ protected:
     typedef typename extends::in_reader_t in_reader_t;
     typedef typename extends::out_writer_t out_writer_t;
     typedef typename extends::err_writer_t err_writer_t;
+
+protected:
 }; /// class main_optt
 typedef main_optt<> main_opt;
 

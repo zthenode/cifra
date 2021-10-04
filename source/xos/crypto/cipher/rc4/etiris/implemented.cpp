@@ -20,9 +20,10 @@
 ///////////////////////////////////////////////////////////////////////
 #include "xos/crypto/cipher/rc4/etiris/implemented.hpp"
 
-#if !defined(XOS_CRYPTO_CIPHER_RC4_ETIRIS_IMPLEMENTED_INSTANCE)
-//#define XOS_CRYPTO_CIPHER_RC4_ETIRIS_IMPLEMENTED_INSTANCE
-#endif /// !defined(XOS_CRYPTO_CIPHER_RC4_ETIRIS_IMPLEMENTED_INSTANCE)
+#if defined(ERROR_INVALID_PARAMETER)
+#define XOS_CRYPTO_CIPHER_RC4_ETIRIS_ERROR_INVALID_PARAMETER ERROR_INVALID_PARAMETER
+#undef ERROR_INVALID_PARAMETER
+#endif /// defined(ERROR_INVALID_PARAMETER)
 
 namespace xos {
 namespace crypto {
@@ -124,3 +125,8 @@ static implemented the_implemented;
 } /// namespace cipher
 } /// namespace crypto
 } /// namespace xos
+
+#if defined(XOS_CRYPTO_CIPHER_RC4_ETIRIS_ERROR_INVALID_PARAMETER)
+#define ERROR_INVALID_PARAMETER XOS_CRYPTO_CIPHER_RC4_ETIRIS_ERROR_INVALID_PARAMETER
+#undef XOS_CRYPTO_CIPHER_RC4_ETIRIS_ERROR_INVALID_PARAMETER
+#endif /// defined(XOS_CRYPTO_CIPHER_RC4_ETIRIS_ERROR_INVALID_PARAMETER)
