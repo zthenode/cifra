@@ -13,48 +13,48 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: aes.pri
+#   File: rc4.pri
 #
 # Author: $author$
-#   Date: 7/31/2021
+#   Date: 9/29/2021
 #
-# QtCreator .pri file for cifra executable aes
+# QtCreator .pri file for cifra executable rc4
 ########################################################################
 
 ########################################################################
-# aes
+# rc4
 
-# aes TARGET
+# rc4 TARGET
 #
-aes_TARGET = aes
+rc4_TARGET = rc4
 
-# aes INCLUDEPATH
+# rc4 INCLUDEPATH
 #
-aes_INCLUDEPATH += \
+rc4_INCLUDEPATH += \
 $${cifra_INCLUDEPATH} \
 
-# aes DEFINES
+# rc4 DEFINES
 #
-aes_DEFINES += \
+rc4_DEFINES += \
 $${cifra_DEFINES} \
 DEFAULT_LOGGING_LEVELS_ERROR \
-XOS_APP_CONSOLE_CRYPTO_CIPHER_AES_MAIN_INSTANCE \
+XOS_APP_CONSOLE_CRYPTO_CIPHER_RC4_MAIN_INSTANCE \
 
 ########################################################################
-# aes OBJECTIVE_HEADERS
+# rc4 OBJECTIVE_HEADERS
 #
-#aes_OBJECTIVE_HEADERS += \
-#$${CIFRA_SRC}/cifra/app/console/aes/main.hh \
+#rc4_OBJECTIVE_HEADERS += \
+#$${CIFRA_SRC}/xos/app/console/crypto/cipher/rc4/main.hh \
 
-# aes OBJECTIVE_SOURCES
+# rc4 OBJECTIVE_SOURCES
 #
-#aes_OBJECTIVE_SOURCES += \
-#$${CIFRA_SRC}/cifra/app/console/aes/main.mm \
+#rc4_OBJECTIVE_SOURCES += \
+#$${CIFRA_SRC}/xos/app/console/crypto/cipher/rc4/main.mm \
 
 ########################################################################
-# aes HEADERS
+# rc4 HEADERS
 #
-aes_HEADERS += \
+rc4_HEADERS += \
 $${NADIR_SRC}/xos/io/sequence.hpp \
 $${NADIR_SRC}/xos/io/seeker.hpp \
 $${NADIR_SRC}/xos/io/reader.hpp \
@@ -114,9 +114,9 @@ $${CIFRA_SRC}/xos/app/console/crypto/sea/main.hpp \
 \
 $${NADIR_SRC}/xos/console/main_main.hpp \
 
-# aes SOURCES
+# rc4 SOURCES
 #
-aes_SOURCES += \
+rc4_SOURCES += \
 $${NADIR_SRC}/xos/io/sequence.cpp \
 $${NADIR_SRC}/xos/io/reader.cpp \
 $${NADIR_SRC}/xos/io/writer.cpp \
@@ -125,23 +125,24 @@ $${NADIR_SRC}/xos/console/io.cpp \
 \
 $${CIFRA_SRC}/xos/crypto/cipher/implemented.cpp \
 \
-$${CIFRA_SRC}/xos/app/console/crypto/cipher/aes/main_opt.cpp \
-$${CIFRA_SRC}/xos/app/console/crypto/cipher/aes/main.cpp \
+$${CIFRA_SRC}/xos/app/console/crypto/cipher/rc4/main_opt.cpp \
+$${CIFRA_SRC}/xos/app/console/crypto/cipher/rc4/main.cpp \
 \
 $${NADIR_SRC}/xos/console/main_main.cpp \
 
 ########################################################################
-# aes FRAMEWORKS
+# rc4 FRAMEWORKS
 #
-aes_FRAMEWORKS += \
+rc4_FRAMEWORKS += \
 $${cifra_FRAMEWORKS} \
 
-# aes LIBS
+# rc4 LIBS
 #
-aes_LIBS += \
+rc4_LIBS += \
 $${cifra_LIBS} \
 
 ########################################################################
 # NO Qt
 QT -= gui core
+
 

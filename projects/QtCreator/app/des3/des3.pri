@@ -13,48 +13,48 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: aes.pri
+#   File: des3.pri
 #
 # Author: $author$
-#   Date: 7/31/2021
+#   Date: 9/29/2021
 #
-# QtCreator .pri file for cifra executable aes
+# QtCreator .pri file for cifra executable des3
 ########################################################################
 
 ########################################################################
-# aes
+# des3
 
-# aes TARGET
+# des3 TARGET
 #
-aes_TARGET = aes
+des3_TARGET = des3
 
-# aes INCLUDEPATH
+# des3 INCLUDEPATH
 #
-aes_INCLUDEPATH += \
+des3_INCLUDEPATH += \
 $${cifra_INCLUDEPATH} \
 
-# aes DEFINES
+# des3 DEFINES
 #
-aes_DEFINES += \
+des3_DEFINES += \
 $${cifra_DEFINES} \
 DEFAULT_LOGGING_LEVELS_ERROR \
-XOS_APP_CONSOLE_CRYPTO_CIPHER_AES_MAIN_INSTANCE \
+XOS_APP_CONSOLE_CRYPTO_CIPHER_DES3_MAIN_INSTANCE \
 
 ########################################################################
-# aes OBJECTIVE_HEADERS
+# des3 OBJECTIVE_HEADERS
 #
-#aes_OBJECTIVE_HEADERS += \
-#$${CIFRA_SRC}/cifra/app/console/aes/main.hh \
+#des3_OBJECTIVE_HEADERS += \
+#$${CIFRA_SRC}/xos/app/console/crypto/cipher/des3/main.hh \
 
-# aes OBJECTIVE_SOURCES
+# des3 OBJECTIVE_SOURCES
 #
-#aes_OBJECTIVE_SOURCES += \
-#$${CIFRA_SRC}/cifra/app/console/aes/main.mm \
+#des3_OBJECTIVE_SOURCES += \
+#$${CIFRA_SRC}/xos/app/console/crypto/cipher/des3/main.mm \
 
 ########################################################################
-# aes HEADERS
+# des3 HEADERS
 #
-aes_HEADERS += \
+des3_HEADERS += \
 $${NADIR_SRC}/xos/io/sequence.hpp \
 $${NADIR_SRC}/xos/io/seeker.hpp \
 $${NADIR_SRC}/xos/io/reader.hpp \
@@ -114,9 +114,9 @@ $${CIFRA_SRC}/xos/app/console/crypto/sea/main.hpp \
 \
 $${NADIR_SRC}/xos/console/main_main.hpp \
 
-# aes SOURCES
+# des3 SOURCES
 #
-aes_SOURCES += \
+des3_SOURCES += \
 $${NADIR_SRC}/xos/io/sequence.cpp \
 $${NADIR_SRC}/xos/io/reader.cpp \
 $${NADIR_SRC}/xos/io/writer.cpp \
@@ -125,23 +125,22 @@ $${NADIR_SRC}/xos/console/io.cpp \
 \
 $${CIFRA_SRC}/xos/crypto/cipher/implemented.cpp \
 \
-$${CIFRA_SRC}/xos/app/console/crypto/cipher/aes/main_opt.cpp \
-$${CIFRA_SRC}/xos/app/console/crypto/cipher/aes/main.cpp \
+$${CIFRA_SRC}/xos/app/console/crypto/cipher/des3/main_opt.cpp \
+$${CIFRA_SRC}/xos/app/console/crypto/cipher/des3/main.cpp \
 \
 $${NADIR_SRC}/xos/console/main_main.cpp \
 
 ########################################################################
-# aes FRAMEWORKS
+# des3 FRAMEWORKS
 #
-aes_FRAMEWORKS += \
+des3_FRAMEWORKS += \
 $${cifra_FRAMEWORKS} \
 
-# aes LIBS
+# des3 LIBS
 #
-aes_LIBS += \
+des3_LIBS += \
 $${cifra_LIBS} \
 
 ########################################################################
 # NO Qt
 QT -= gui core
-

@@ -13,48 +13,56 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: cifra.pri
+#   File: sha5.pri
 #
 # Author: $author$
-#   Date: 7/31/2021
+#   Date: 9/30/2021
 #
-# QtCreator .pri file for cifra executable cifra
+# QtCreator .pri file for cifra executable sha5
 ########################################################################
 
 ########################################################################
-# cifra
+# sha5
 
-# cifra_exe TARGET
+# sha5 TARGET
 #
-cifra_exe_TARGET = cifra
+sha5_TARGET = sha5
 
-# cifra_exe INCLUDEPATH
+# sha5 INCLUDEPATH
 #
-cifra_exe_INCLUDEPATH += \
+sha5_INCLUDEPATH += \
 $${cifra_INCLUDEPATH} \
 
-# cifra_exe DEFINES
+# sha5 DEFINES
 #
-cifra_exe_DEFINES += \
+sha5_DEFINES += \
 $${cifra_DEFINES} \
 DEFAULT_LOGGING_LEVELS_ERROR \
-XOS_APP_CONSOLE_CIFRA_MAIN_INSTANCE \
+XOS_APP_CONSOLE_CRYPTO_HASH_SHA512_MAIN_INSTANCE \
 
 ########################################################################
-# cifra_exe OBJECTIVE_HEADERS
+# sha5 OBJECTIVE_HEADERS
 #
-#cifra_exe_OBJECTIVE_HEADERS += \
-#$${CIFRA_SRC}/cifra/app/console/cifra/main.hh \
+#sha5_OBJECTIVE_HEADERS += \
+#$${CIFRA_SRC}/xos/app/console/crypto/hash/sha512/main.hh \
 
-# cifra_exe OBJECTIVE_SOURCES
+# sha5 OBJECTIVE_SOURCES
 #
-#cifra_exe_OBJECTIVE_SOURCES += \
-#$${CIFRA_SRC}/cifra/app/console/cifra/main.mm \
+#sha5_OBJECTIVE_SOURCES += \
+#$${CIFRA_SRC}/xos/app/console/crypto/hash/sha512/main.mm \
 
 ########################################################################
-# cifra_exe HEADERS
+# sha5 HEADERS
 #
-cifra_exe_HEADERS += \
+sha5_HEADERS += \
+$${NADIR_SRC}/xos/console/io.hpp \
+$${NADIR_SRC}/xos/console/getopt/main_opt.hpp \
+$${NADIR_SRC}/xos/console/getopt/main.hpp \
+$${NADIR_SRC}/xos/app/console/main_opt.hpp \
+$${NADIR_SRC}/xos/app/console/main.hpp \
+$${NADIR_SRC}/xos/app/console/version/main_opt.hpp \
+$${NADIR_SRC}/xos/app/console/version/main.hpp \
+\
 $${CIFRA_SRC}/xos/crypto/base/error.hpp \
 $${CIFRA_SRC}/xos/crypto/base/exception.hpp \
 $${CIFRA_SRC}/xos/crypto/base/implement.hpp \
@@ -65,52 +73,56 @@ $${CIFRA_SRC}/xos/crypto/hash/algorithm.hpp \
 $${CIFRA_SRC}/xos/crypto/hash/implement.hpp \
 $${CIFRA_SRC}/xos/crypto/hash/extend.hpp \
 $${CIFRA_SRC}/xos/crypto/hash/md5.hpp \
-$${CIFRA_SRC}/xos/crypto/hash/openssl/md5.hpp \
 $${CIFRA_SRC}/xos/crypto/hash/sha1.hpp \
-$${CIFRA_SRC}/xos/crypto/hash/openssl/sha1.hpp \
 $${CIFRA_SRC}/xos/crypto/hash/sha256.hpp \
-$${CIFRA_SRC}/xos/crypto/hash/openssl/sha256.hpp \
 $${CIFRA_SRC}/xos/crypto/hash/sha512.hpp \
+$${CIFRA_SRC}/xos/crypto/hash/openssl/md5.hpp \
+$${CIFRA_SRC}/xos/crypto/hash/openssl/sha1.hpp \
+$${CIFRA_SRC}/xos/crypto/hash/openssl/sha256.hpp \
 $${CIFRA_SRC}/xos/crypto/hash/openssl/sha512.hpp \
 $${CIFRA_SRC}/xos/crypto/hash/implemented.hpp \
 $${CIFRA_SRC}/xos/crypto/hash.hpp \
 \
-$${CIFRA_SRC}/xos/crypto/random/generator.hpp \
-$${CIFRA_SRC}/xos/crypto/random/pseudo/generator.hpp \
-$${CIFRA_SRC}/xos/crypto/random/implemented.hpp \
-$${CIFRA_SRC}/xos/crypto/random.hpp \
-\
+$${CIFRA_SRC}/xos/app/console/crypto/base/main_opt.hpp \
+$${CIFRA_SRC}/xos/app/console/crypto/base/main.hpp \
+$${CIFRA_SRC}/xos/app/console/crypto/hash/base/main_opt.hpp \
+$${CIFRA_SRC}/xos/app/console/crypto/hash/base/main.hpp \
+$${CIFRA_SRC}/xos/app/console/crypto/hash/md5/main_opt.hpp \
+$${CIFRA_SRC}/xos/app/console/crypto/hash/md5/main.hpp \
+$${CIFRA_SRC}/xos/app/console/crypto/hash/sha1/main_opt.hpp \
+$${CIFRA_SRC}/xos/app/console/crypto/hash/sha1/main.hpp \
+$${CIFRA_SRC}/xos/app/console/crypto/hash/sha256/main_opt.hpp \
+$${CIFRA_SRC}/xos/app/console/crypto/hash/sha256/main.hpp \
+$${CIFRA_SRC}/xos/app/console/crypto/hash/sha512/main_opt.hpp \
+$${CIFRA_SRC}/xos/app/console/crypto/hash/sha512/main.hpp \
 $${CIFRA_SRC}/xos/app/console/crypto/hash/main_opt.hpp \
 $${CIFRA_SRC}/xos/app/console/crypto/hash/main.hpp \
-\
-$${CIFRA_SRC}/xos/app/console/cifra/main_opt.hpp \
-$${CIFRA_SRC}/xos/app/console/cifra/main.hpp \
+$${CIFRA_SRC}/xos/app/console/crypto/sha/main_opt.hpp \
+$${CIFRA_SRC}/xos/app/console/crypto/sha/main.hpp \
 \
 $${NADIR_SRC}/xos/console/main_main.hpp \
 
-# cifra_exe SOURCES
+# sha5 SOURCES
 #
-cifra_exe_SOURCES += \
-$${CIFRA_SRC}/xos/crypto/base.cpp \
-$${CIFRA_SRC}/xos/crypto/hash.cpp \
-$${CIFRA_SRC}/xos/crypto/random.cpp \
-\
-$${CIFRA_SRC}/xos/app/console/cifra/main_opt.cpp \
-$${CIFRA_SRC}/xos/app/console/cifra/main.cpp \
+sha5_SOURCES += \
+$${CIFRA_SRC}/xos/app/console/crypto/hash/sha512/main_opt.cpp \
+$${CIFRA_SRC}/xos/app/console/crypto/hash/sha512/main.cpp \
 \
 $${NADIR_SRC}/xos/console/main_main.cpp \
 
 ########################################################################
-# cifra_exe FRAMEWORKS
+# sha5 FRAMEWORKS
 #
-cifra_exe_FRAMEWORKS += \
+sha5_FRAMEWORKS += \
 $${cifra_FRAMEWORKS} \
 
-# cifra_exe LIBS
+# sha5 LIBS
 #
-cifra_exe_LIBS += \
+sha5_LIBS += \
 $${cifra_LIBS} \
 
 ########################################################################
 # NO Qt
 QT -= gui core
+
+

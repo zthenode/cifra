@@ -13,48 +13,48 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: aes.pri
+#   File: sea.pri
 #
 # Author: $author$
-#   Date: 7/31/2021
+#   Date: 9/29/2021
 #
-# QtCreator .pri file for cifra executable aes
+# QtCreator .pri file for cifra executable sea
 ########################################################################
 
 ########################################################################
-# aes
+# sea
 
-# aes TARGET
+# sea TARGET
 #
-aes_TARGET = aes
+sea_TARGET = sea
 
-# aes INCLUDEPATH
+# sea INCLUDEPATH
 #
-aes_INCLUDEPATH += \
+sea_INCLUDEPATH += \
 $${cifra_INCLUDEPATH} \
 
-# aes DEFINES
+# sea DEFINES
 #
-aes_DEFINES += \
+sea_DEFINES += \
 $${cifra_DEFINES} \
 DEFAULT_LOGGING_LEVELS_ERROR \
-XOS_APP_CONSOLE_CRYPTO_CIPHER_AES_MAIN_INSTANCE \
+XOS_APP_CONSOLE_CRYPTO_SEA_MAIN_INSTANCE \
 
 ########################################################################
-# aes OBJECTIVE_HEADERS
+# sea OBJECTIVE_HEADERS
 #
-#aes_OBJECTIVE_HEADERS += \
-#$${CIFRA_SRC}/cifra/app/console/aes/main.hh \
+#sea_OBJECTIVE_HEADERS += \
+#$${CIFRA_SRC}/xos/app/console/crypto/cipher/sea/main.hh \
 
-# aes OBJECTIVE_SOURCES
+# sea OBJECTIVE_SOURCES
 #
-#aes_OBJECTIVE_SOURCES += \
-#$${CIFRA_SRC}/cifra/app/console/aes/main.mm \
+#sea_OBJECTIVE_SOURCES += \
+#$${CIFRA_SRC}/xos/app/console/crypto/cipher/sea/main.mm \
 
 ########################################################################
-# aes HEADERS
+# sea HEADERS
 #
-aes_HEADERS += \
+sea_HEADERS += \
 $${NADIR_SRC}/xos/io/sequence.hpp \
 $${NADIR_SRC}/xos/io/seeker.hpp \
 $${NADIR_SRC}/xos/io/reader.hpp \
@@ -114,9 +114,9 @@ $${CIFRA_SRC}/xos/app/console/crypto/sea/main.hpp \
 \
 $${NADIR_SRC}/xos/console/main_main.hpp \
 
-# aes SOURCES
+# sea SOURCES
 #
-aes_SOURCES += \
+sea_SOURCES += \
 $${NADIR_SRC}/xos/io/sequence.cpp \
 $${NADIR_SRC}/xos/io/reader.cpp \
 $${NADIR_SRC}/xos/io/writer.cpp \
@@ -125,23 +125,22 @@ $${NADIR_SRC}/xos/console/io.cpp \
 \
 $${CIFRA_SRC}/xos/crypto/cipher/implemented.cpp \
 \
-$${CIFRA_SRC}/xos/app/console/crypto/cipher/aes/main_opt.cpp \
-$${CIFRA_SRC}/xos/app/console/crypto/cipher/aes/main.cpp \
+$${CIFRA_SRC}/xos/app/console/crypto/sea/main_opt.cpp \
+$${CIFRA_SRC}/xos/app/console/crypto/sea/main.cpp \
 \
 $${NADIR_SRC}/xos/console/main_main.cpp \
 
 ########################################################################
-# aes FRAMEWORKS
+# sea FRAMEWORKS
 #
-aes_FRAMEWORKS += \
+sea_FRAMEWORKS += \
 $${cifra_FRAMEWORKS} \
 
-# aes LIBS
+# sea LIBS
 #
-aes_LIBS += \
+sea_LIBS += \
 $${cifra_LIBS} \
 
 ########################################################################
 # NO Qt
 QT -= gui core
-
